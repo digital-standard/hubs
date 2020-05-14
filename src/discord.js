@@ -11,10 +11,10 @@ import registerTelemetry from "./telemetry";
 
 registerTelemetry("/discord", "Discord Landing Page");
 
-import en from "react-intl/locale-data/en";
+import ja from "react-intl/locale-data/ja";
 import { lang, messages } from "./utils/i18n";
 
-addLocaleData([...en]);
+addLocaleData([...ja]);
 const inviteUrl = "https://forms.gle/GGPgarSuY5WaTNCT8";
 
 class DiscordLanding extends Component {

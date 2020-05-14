@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { IntlProvider, FormattedMessage, addLocaleData } from "react-intl";
-import en from "react-intl/locale-data/en";
+import ja from "react-intl/locale-data/ja";
 
 import configs from "../utils/configs";
 import IfFeature from "./if-feature";
@@ -17,7 +17,7 @@ import { faPencilAlt } from "@fortawesome/free-solid-svg-icons/faPencilAlt";
 
 import { lang, messages } from "../utils/i18n";
 
-addLocaleData([...en]);
+addLocaleData([...ja]);
 
 class SceneUI extends Component {
   static propTypes = {

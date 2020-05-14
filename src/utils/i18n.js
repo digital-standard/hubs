@@ -4,9 +4,9 @@ import localeData from "../assets/translations.data.json";
 const navigatorLang = ((navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage)
   .toLowerCase()
   .split(/[_-]+/)[0];
-export const lang = (localeData[navigatorLang] && navigatorLang) || "en";
 
-const _messages = localeData[lang] || localeData.en;
+export const lang = "ja";
+const _messages = localeData[lang] || localeData.ja;
 
 if (configs.APP_CONFIG && configs.APP_CONFIG.translations && configs.APP_CONFIG.translations[lang]) {
   const configTranslations = configs.APP_CONFIG.translations[lang];
