@@ -5,12 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { IntlProvider, addLocaleData } from "react-intl";
 import ja from "react-intl/locale-data/ja";
+import en from "react-intl/locale-data/en";
 
 import styles from "../assets/stylesheets/preferences-screen.scss";
 import { lang, messages } from "../utils/i18n";
 import { PreferenceListItem, PREFERENCE_LIST_ITEM_TYPE } from "./preference-list-item";
 
-addLocaleData([...ja]);
+addLocaleData([...ja, ...en]);
 
 const isMobile = AFRAME.utils.device.isMobile() || AFRAME.utils.device.isMobileVR();
 

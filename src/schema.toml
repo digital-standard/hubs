@@ -1,5 +1,4 @@
 # App config schema
-
 translations.ja."app-name" = { category = "translations", type = "string", name = "App Name", description = "Name used across the app." }
 translations.ja."app-description" = { category = "translations", type = "string", name = "App Description", description = "App description used across the app." }
 translations.ja."app-tagline" = { category = "translations", type = "string", name = "App Tagline", description = "A shorter app description used across the app." }

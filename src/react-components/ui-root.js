@@ -4,6 +4,7 @@ import classNames from "classnames";
 import copy from "copy-to-clipboard";
 import { IntlProvider, FormattedMessage, addLocaleData } from "react-intl";
 import ja from "react-intl/locale-data/ja";
+import en from "react-intl/locale-data/en";
 import screenfull from "screenfull";
 
 import configs from "../utils/configs";
@@ -83,7 +84,7 @@ import qsTruthy from "../utils/qs_truthy";
 import { CAMERA_MODE_INSPECT } from "../systems/camera-system";
 const avatarEditorDebug = qsTruthy("avatarEditorDebug");
 
-addLocaleData([...ja]);
+addLocaleData([...ja, ...en]);
 
 // This is a list of regexes that match the microphone labels of HMDs.
 //

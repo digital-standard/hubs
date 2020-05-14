@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { IntlProvider, FormattedMessage, addLocaleData } from "react-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ja from "react-intl/locale-data/ja";
+import en from "react-intl/locale-data/en";
 
 import configs from "../utils/configs";
 import IfFeature from "./if-feature";
@@ -28,7 +29,7 @@ import AuthDialog from "./auth-dialog.js";
 import SignInDialog from "./sign-in-dialog.js";
 import MediaTiles from "./media-tiles";
 
-addLocaleData([...ja]);
+addLocaleData([...ja, ...en]);
 
 const isMobile = checkIsMobile();
 

@@ -1,5 +1,8 @@
 {
   "ja": {
+    "avatar-preview.loading-failed": "ロード失敗\n別のアバターを選択して下さい"
+  },
+  "en": {
     "avatar-preview.loading-failed": "Loading failed\nPlease choose another avatar"
   }
 }
