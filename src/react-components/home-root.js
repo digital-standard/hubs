@@ -281,7 +281,12 @@ class HomeRoot extends Component {
               )}
             </div>
 
-            <div className={styles.footerContent}>
+            <div className={styles.secondaryLink} align="center">
+              <a href="https://qiita.com/wirsind55/private/19da62b67ca8a5a16e5b">
+                <FormattedMessage id="app-qiita-link" />
+              </a>
+            </div>
+            <div className={styles.footerContent}>  
               <div className={styles.poweredBy}>
                 <UnlessFeature name="hide_powered_by">
                   <span className={styles.prefix}>
@@ -346,7 +351,7 @@ class HomeRoot extends Component {
                     </a>
                   </IfFeature>
                   <IfFeature name="show_company_logo">
-                    <img className={styles.companyLogo} src={configs.image("company_logo")} />
+                    <a href="https://digital-standard.com/"><img className={styles.companyLogo} src={configs.image("company_logo")} /></a>
                   </IfFeature>
                 </div>
               </div>
@@ -423,6 +428,25 @@ class HomeRoot extends Component {
   }
 
   renderNonFeaturedRoomsHero() {
+    if(window.parent.screen.width < 1250)
+    {
+      return (
+        <div className={styles.heroPanel}>
+          <div className={styles.container}>
+            <div className={styles.logo}>
+              <img src={configs.image("logo")} />
+            </div>
+            <div className={styles.blurb}>
+              <FormattedMessage id="app-description-sp" />
+            </div>
+          </div>
+          <div className={styles.ctaButtons}>
+            {this.props.showCreate && this.renderCreateButton()}
+            {this.renderPwaButton()}
+          </div>
+        </div>
+      );
+    }
     return (
       <div className={styles.heroPanel}>
         <div className={styles.container}>
