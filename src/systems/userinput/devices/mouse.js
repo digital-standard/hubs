@@ -69,6 +69,9 @@ export class MouseDevice {
     if (event.type === "mousedown" && left) {
       this.mouseDownLeftThisFrame = true;
       this.buttonLeft = true;
+      //alert('leftClick');
+
+    
     } else if (event.type === "mousedown" && right) {
       this.mouseDownRightThisFrame = true;
       this.buttonRight = true;

@@ -355,11 +355,11 @@ export class CameraSystem {
       this.interaction = this.interaction || scene.systems.interaction;
 
       if (this.userinput.get(paths.actions.startInspecting) && this.mode !== CAMERA_MODE_INSPECT) {
-        const hoverEl = this.interaction.state.rightRemote.hovered || this.interaction.state.leftRemote.hovered;
+        const hoverEl =  this.interaction.state.leftRemote.hovered || this.interaction.state.rightRemote.hovered;
 
         if (hoverEl) {
           const inspectable = getInspectable(hoverEl);
-
+          alert(inspectable.object3D.name);
           if (inspectable) {
             this.inspect(inspectable.object3D);
           }
