@@ -359,7 +359,6 @@ export class CameraSystem {
 
         if (hoverEl) {
           const inspectable = getInspectable(hoverEl);
-          alert(inspectable.object3D.name);
           if (inspectable) {
             this.inspect(inspectable.object3D);
           }

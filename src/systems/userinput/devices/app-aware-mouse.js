@@ -60,12 +60,18 @@ export class AppAwareMouseDevice {
       const intersection = rawIntersections.find(x => x.object.el);
       const remoteHoverTarget = intersection && findRemoteHoverTarget(intersection.object);
       const userinput = AFRAME.scenes[0].systems.userinput;
-      alert(JSON.stringify(remoteHoverTarget.object3D.name));
+      
       const isInteractable =
         intersection &&
         intersection.object.el.matches(
           ".interactable, .interactable *, .occupiable-waypoint-icon, .teleport-waypoint-icon"
         );
+      
+      if(isInteractable)
+      {
+        alert(JSON.stringify(remoteHoverTarget.object3D.name));
+      }
+
       const isPinned =
         remoteHoverTarget && remoteHoverTarget.components.pinnable && remoteHoverTarget.components.pinnable.data.pinned;
       const isFrozen = AFRAME.scenes[0].is("frozen");
