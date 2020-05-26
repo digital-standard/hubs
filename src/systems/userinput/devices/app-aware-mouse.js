@@ -60,6 +60,7 @@ export class AppAwareMouseDevice {
       const intersection = rawIntersections.find(x => x.object.el);
       const remoteHoverTarget = intersection && findRemoteHoverTarget(intersection.object);
       const userinput = AFRAME.scenes[0].systems.userinput;
+      alert(JSON.stringify(remoteHoverTarget.object3D.name));
       const isInteractable =
         intersection &&
         intersection.object.el.matches(
