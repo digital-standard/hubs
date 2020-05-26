@@ -13,12 +13,22 @@ export class SuperSpawnerSystem {
         ? window.APP.hubChannel.can("spawn_emoji")
         : window.APP.hubChannel.can("spawn_and_move_media"));
 
+    let isScriptTrigger = false;
+    if(superSpawner)
+    {
+      if(state.hovered.object3D.name.indexOf('script') !== -1)
+      {
+        isScriptTrigger = true;
+      }
+    }
+
     if (
       superSpawner &&
       superSpawner.spawnedMediaScale &&
       !superSpawner.cooldownTimeout &&
       userinput.get(grabPath) &&
-      isPermitted
+      isPermitted &&
+      !isScriptTrigger
     ) {
       this.performSpawn(state, grabPath, userinput, superSpawner);
     }
