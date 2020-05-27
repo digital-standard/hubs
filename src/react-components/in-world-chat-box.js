@@ -119,6 +119,9 @@ class InWorldChatBox extends Component {
               className={classNames([styles.messageEntrySpawn])}
               src={spawnMessageIcon}
               onClick={() => {
+                var elements = document.querySelectorAll('[class*=message-entry-input]');
+                this.state.pendingMessage = elements[0].value;
+
                 if (this.state.pendingMessage.length > 0) {
                   spawnChatMessage(this.state.pendingMessage);
                   this.setState({ pendingMessage: "" });
