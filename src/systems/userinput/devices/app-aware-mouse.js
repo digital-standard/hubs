@@ -69,7 +69,7 @@ export class AppAwareMouseDevice {
       
       if(isInteractable)
       {
-        alert(JSON.stringify(remoteHoverTarget.object3D.name));
+        //alert(JSON.stringify(remoteHoverTarget.object3D.name));
       }
 
       const isPinned =

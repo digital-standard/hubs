@@ -1,5 +1,6 @@
 import { addMedia } from "../utils/media-utils";
 import { ObjectContentOrigins } from "../object-types";
+import { triggeredFunctions } from "../triggeredFunctions";
 
 // WARNING: This system mutates interaction system state!
 export class SuperSpawnerSystem {
@@ -31,6 +32,16 @@ export class SuperSpawnerSystem {
       !isScriptTrigger
     ) {
       this.performSpawn(state, grabPath, userinput, superSpawner);
+    }
+    else if(
+      superSpawner &&
+      superSpawner.spawnedMediaScale &&
+      !superSpawner.cooldownTimeout &&
+      userinput.get(grabPath) &&
+      isPermitted &&
+      isScriptTrigger
+    ){
+      triggeredFunctions.sampleAlert();
     }
   }
 
