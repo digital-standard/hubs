@@ -488,6 +488,7 @@
     "entry.daydream-via-chrome": "Google Chromeを使用中",
     "entry.invite-others": "招待",
     "entry.share-button": "シェア",
+    "entry.product-button": "商品",
     "entry.desktop.invite-tip": "誰もいません。共有して知らせましょう",
     "entry.mobile.invite-tip": "共有して知らせる",
     "entry.return-to-vr": "VRに戻る",
@@ -811,6 +812,12 @@
     "cloud.call_to_action_personal": "Get Hubs Cloud Personal",
     "cloud.call_to_action_enterprise": "Get Hubs Cloud Enterprise",
     "cloud.aws_quick_start": "Quick Start Guide",
-    "cloud.splash_tag": "Configurable infrastructure for your own Hubs stack"
+    "cloud.splash_tag": "Configurable infrastructure for your own Hubs stack",
+    "product.name_modal": "商品名：",
+    "product.info_modal": "商品情報：",
+    "product.price_modal": "価格：",
+    "product.genre_modal": "ジャンル：",
+    "product.review_modal": "レビュー：",
+    "product.status_modal": "商品状態："
   }
 }

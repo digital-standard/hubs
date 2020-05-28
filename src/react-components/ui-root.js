@@ -15,6 +15,7 @@ import { canShare } from "../utils/share";
 import styles from "../assets/stylesheets/ui-root.scss";
 import entryStyles from "../assets/stylesheets/entry.scss";
 import inviteStyles from "../assets/stylesheets/invite-dialog.scss";
+import productStyles from "../assets/stylesheets/product-dialog.scss";
 import { ReactAudioContext } from "./wrap-with-audio";
 import {
   pushHistoryState,
@@ -40,6 +41,7 @@ import ChangeSceneDialog from "./change-scene-dialog.js";
 import AvatarUrlDialog from "./avatar-url-dialog.js";
 import InviteDialog from "./invite-dialog.js";
 import InviteTeamDialog from "./invite-team-dialog.js";
+import ProductDialog from "./product-dialog.js";
 import LinkDialog from "./link-dialog.js";
 import InAppBrowserDialog from "./in-app-browser-dialog.js";
 import SignInDialog from "./sign-in-dialog.js";
@@ -839,6 +841,16 @@ class UIRoot extends Component {
     this.setState({ showShareDialog: !this.state.showShareDialog });
   };
 
+  showProductDialog = () => {
+    this.props.store.update({ activity: { hasOpenedProduct: true } });
+    this.setState({ showProductDialog: true });
+  };
+
+  toggleProductDialog = async() => {
+    this.props.store.update({ activity: {hasOpenedProduct: true } });
+    this.setState({ showProductDialog: !this.state.showProductDialog });
+  }
+
   createObject = media => {
     this.props.scene.emit("add_media", media);
   };
@@ -1622,6 +1634,17 @@ class UIRoot extends Component {
       !this.props.store.state.activity.hasOpenedShare &&
       this.occupantCount() <= 1;
 
+    const showProductTip = 
+      !hasTopTip &&
+      !entered &&
+      !embed &&
+      !preload &&
+      !watching &&
+      !hasTopTip &&
+      !inEntryFlow &&
+      !this.props.store.state.activity.hasOpenedProduct &&
+      this.occupantCount() <= 1;
+
     const showChooseSceneButton =
       !entered &&
       !embed &&
@@ -1979,6 +2002,62 @@ class UIRoot extends Component {
                       <FormattedMessage id="entry.change-scene" />
                     </button>
                   )}
+                  {!embed &&
+                    this.occupantCount() > 1 &&
+                    !hasTopTip &&
+                    entered &&
+                    !streaming && (
+                      <button onClick={this.onMiniInviteClicked} className={productStyles.productMiniButton}>
+                        <span>
+                         
+                        </span>
+                      </button>
+                    )}
+                  {embed && (
+                    <a href={baseUrl} className={productStyles.enterButton} target="_blank" rel="noopener noreferrer">
+                      <FormattedMessage id="商品情報" />
+                    </a>
+                  )}
+                  {this.state.showProductDialog && (
+                    <ProductDialog
+                      isModal={true}
+                      onSale = {true}
+                      name = {"Pickachu"}
+                      info = {"Pickachu can evolve"}
+                      photoPath = {"https://pbs.twimg.com/profile_images/801078530159165440/Dhy7OllF_400x400.jpg"}
+                      price = {500}
+                      genre = {"Pocket Monster"}
+                      review = {5}
+                      productStatus = {1}
+                      onClose={() => this.setState({ showProductDialog: false })}
+                    />
+                  )}
+                </div>
+              )}
+            
+            {!this.state.frozen &&
+              !watching &&
+              !preload && (
+                <div
+                  className={classNames({
+                    [productStyles.productContainer]: true,
+                    [productStyles.productContainerBelowHud]: entered,
+                    [productStyles.productContainerInverted]: this.state.showProductDialog
+                  })}
+                >
+                  {!embed &&
+                    !streaming && (
+                      <button
+                        className={classNames({
+                          [productStyles.productButton]: true,
+                          [productStyles.hideSmallScreens]: this.occupantCount() > 1 && entered,
+                          [productStyles.productButtonLowered]: hasTopTip
+                        })}
+                        onClick={() => this.toggleProductDialog()}
+                      >
+                        <FormattedMessage id="entry.product-button" />
+                      </button>
+                    )}
 
                   {showInviteTip && (
                     <div className={styles.inviteTip}>

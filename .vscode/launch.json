@@ -1,0 +1,31 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // 次のコマンドを実行してから
+        // npm run dev
+        {
+            "name": "Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://localhost:8080",
+            "webRoot": "${workspaceRoot}/src",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        },
+        {
+            "name": "npm run deploy",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "deploy"
+            ],
+            "timeout": 40000,
+        }
+    ]
+}

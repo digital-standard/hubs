@@ -326,6 +326,11 @@ export default class SceneEntryManager {
       pushHistoryState(this.history, "overlay", "invite");
     });
 
+    this.scene.addEventListener("action_product", () => {
+      handleExitTo2DInterstitial(false, () => this.history.goBack());
+      pushHistoryState(this.history, "overlay", "product");
+    });
+
     this.scene.addEventListener("action_kick_client", ({ detail: { clientId } }) => {
       this.performConditionalSignIn(
         () => this.hubChannel.can("kick_users"),
