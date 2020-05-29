@@ -77,6 +77,8 @@
     @extend %action-button;
     pointer-events: auto;
     right: 150px;
+    min-width: 0px;
+    height: 0px;
   }
 
   :local(.product-button-lowered) {

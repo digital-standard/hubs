@@ -24,6 +24,14 @@ export default class ProductDialog extends Component {
     onClose: PropTypes.func
   }
 
+  state = {
+    cartButtonActive: true,
+  };
+
+  cartClicked = link => {
+    this.setState({ cartButtonActive: false });
+  };
+
   render(){
     let proStatus = "";
     if(this.props.productStatus === 1)
@@ -38,16 +46,29 @@ export default class ProductDialog extends Component {
       <div className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
         <div>
-          <FormattedMessage id={`product.name${this.props.name ? "_modal" : ""}`} /> {this.props.name};
+          <span id="product_dialog_product_id">{this.props.name};</span>
         </div>
         <div>
-          <FormattedMessage id={`product.info${this.props.info ? "_modal" : ""}`} /> {this.props.info};
+          <FormattedMessage id={`product.name${this.props.name ? "_modal" : ""}`} /> <span id="product_dialog_product_name">{this.props.name};</span>
         </div>
         <div>
-          <FormattedMessage id={`product.price${this.props.price ? "_modal" : ""}`} /> {this.props.price + 'yen'};
+            <img id="product_dialog_product_pic" src= "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fent2.excite.co.jp%2Fmusic%2Finterview%2F2003%2Fmatsu%2Fimage%2Fpic01.jpg&twidth=1000&theight=0&qlt=80&res_format=jpg&op=r" alt="" title="" />
         </div>
         <div>
-          <FormattedMessage id={`product.status${this.props.productStatus ? "_modal" : ""}`} /> {proStatus};
+          <FormattedMessage id={`product.info${this.props.info ? "_modal" : ""}`} /> <span id="product_dialog_product_info">{this.props.info};</span>
+        </div>
+        <div>
+          <FormattedMessage id={`product.price${this.props.price ? "_modal" : ""}`} /> <span id="product_dialog_product_price">{this.props.price + 'yen'};</span>
+        </div>
+        <div>
+          <FormattedMessage id={`product.status${this.props.productStatus ? "_modal" : ""}`} /><span id="product_dialog_product_status">{proStatus};</span>
+        </div>
+        <div className={styles.buttons}>
+          <WithHoverSound>
+            <button className={styles.linkButton} onClick={this.cartClicked.bind(this)}>
+    <span>{this.state.cartButtonActive ? <FormattedMessage id={`product.take_it_in_cart`} /> : <FormattedMessage id={`product.taken_in_cart`} /> } </span>
+            </button>
+          </WithHoverSound>
         </div>
         <WithHoverSound>
           <button className={styles.close} onClick={() => this.props.onClose()}>

@@ -818,6 +818,8 @@
     "product.price_modal": "価格：",
     "product.genre_modal": "ジャンル：",
     "product.review_modal": "レビュー：",
-    "product.status_modal": "商品状態："
+    "product.status_modal": "商品状態：",
+    "product.take_it_in_cart": "カートに入れる",
+    "product.taken_in_cart": "カートに入れました"
   }
 }

@@ -2034,7 +2034,25 @@ class UIRoot extends Component {
                   )}
                 </div>
               )}
-            
+            <StateRoute
+              stateKey="overlay"
+              stateValue="product"
+              history={this.props.history}
+              render={() => (
+                <ProductDialog
+                  isModal={true}
+                  onSale = {true}
+                  name = {"Pickachu"}
+                  info = {"Pickachu can evolve"}
+                  photoPath = {"https://pbs.twimg.com/profile_images/801078530159165440/Dhy7OllF_400x400.jpg"}
+                  price = {500}
+                  genre = {"Pocket Monster"}
+                  review = {5}
+                  productStatus = {1}
+                  onClose={() => this.setState({ showProductDialog: false })}
+                />
+              )}
+            />
             {!this.state.frozen &&
               !watching &&
               !preload && (
@@ -2055,7 +2073,7 @@ class UIRoot extends Component {
                         })}
                         onClick={() => this.toggleProductDialog()}
                       >
-                        <FormattedMessage id="entry.product-button" />
+                        {/*ボタン名無（画面に表示されない）のボタンにする <FormattedMessage id="entry.product-button" /> */}
                       </button>
                     )}
 
