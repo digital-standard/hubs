@@ -793,6 +793,7 @@
     "object-info.raise-lights": "背景を表示",
     "object-info.lower-lights": "背景を隠す",
     "object-info.unpin-button": "ピンを外す",
+    "shopping-info.no-shopping": "カートに何も入っていません",
     "avatar-landing.select": "選択",
     "avatar-landing.selected": "現在のあなたのアバター",
     "leave-room-dialog.join-room.message": "新たな部屋に参加するとここを退出になります。宜しいですか？",

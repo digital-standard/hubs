@@ -1,0 +1,9 @@
+@import 'shared.scss';
+@import 'drop-menus.scss';
+
+:local(.wrapp ) {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+}
