@@ -41,7 +41,7 @@ export class SuperSpawnerSystem {
       isPermitted &&
       isScriptTrigger
     ){
-      triggeredFunctions.sampleAlert();
+      triggeredFunctions.pickachuSpawnerClick();
     }
   }
 

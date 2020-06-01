@@ -14,7 +14,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import configs from "../utils/configs";
 import IfFeature from "./if-feature";
 import { SCHEMA } from "../storage/store";
-import styles from "../assets/stylesheets/profile.scss";
 import { fetchAvatar } from "../utils/avatar-utils";
 import { handleTextFieldFocus, handleTextFieldBlur } from "../utils/focus-utils";
 import { replaceHistoryState } from "../utils/history";
@@ -48,20 +47,30 @@ class ShoppingListPanel extends Component{
   }
 
   render() {
+    const { formatMessage } = this.props.intl;
+
       return (
-        <div className={styles.profileEntry}>
-            <div className={styles.close}>
-            <button autoFocus onClick={() => this.props.onClose()}>
+        <div className={shoppingListPanelStyles.profileEntry}>
+            <div className={shoppingListPanelStyles.close}>
+              <button autoFocus onClick={() => this.props.onClose()}>
                 <i>
-                    <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faTimes} />
                 </i>
-            </button>
-        </div>
+              </button>
+              <div className={classNames([shoppingListPanelStyles.box])}>
+                <label className={shoppingListPanelStyles.title}>
+                  <FormattedMessage id="cart.list" />
+                </label>
+              </div>
+            </div>
             <div class={shoppingListPanelStyles.wrapp}>
-                <div><ShoppingItem icon={PurinIcon} label="プリン" /></div>
-                <div><ShoppingItem icon={MyuIcon} label="ミュウ" /></div>
-                <div><ShoppingItem icon={PickachuIcon} label="ピカチュウ" /></div>
-            </div>  
+              <div><ShoppingItem icon={PurinIcon} name="プリン" price="$150" genre="monster" productStatus="新品" info="カナダシティに出現しがち" /></div>
+              <div><ShoppingItem icon={MyuIcon} name="ミュウ"  price="$100000" genre="regend monster" productStatus="新品" info="その姿は幻" /></div>
+              <div><ShoppingItem icon={PickachuIcon} name="ピカチュウ" price="$10000" genre="popular monster" productStatus="中古" info="里親募集中"/></div>
+            </div>
+            <div>
+              <input className={shoppingListPanelStyles.formSubmit} type="submit" value={formatMessage({ id: "cart.buy" })} />
+            </div>
         </div>
       )
   }

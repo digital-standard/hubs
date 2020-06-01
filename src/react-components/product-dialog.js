@@ -13,6 +13,7 @@ import styles from "../assets/stylesheets/product-dialog.scss";
 export default class ProductDialog extends Component {
   static propTypes = {
     isModal: PropTypes.bool,
+    id: PropTypes.number,
     onSale: PropTypes.bool,
     name: PropTypes.string,
     info: PropTypes.string,
@@ -46,13 +47,13 @@ export default class ProductDialog extends Component {
       <div className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
         <div>
-          <span id="product_dialog_product_id">{this.props.name};</span>
+          <span id="product_dialog_product_id">{this.props.id};</span>
         </div>
         <div>
           <FormattedMessage id={`product.name${this.props.name ? "_modal" : ""}`} /> <span id="product_dialog_product_name">{this.props.name};</span>
         </div>
         <div>
-            <img id="product_dialog_product_pic" src= "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fent2.excite.co.jp%2Fmusic%2Finterview%2F2003%2Fmatsu%2Fimage%2Fpic01.jpg&twidth=1000&theight=0&qlt=80&res_format=jpg&op=r" alt="" title="" />
+            <img id="product_dialog_product_pic" src={this.props.photoPath} alt="" title="" />
         </div>
         <div>
           <FormattedMessage id={`product.info${this.props.info ? "_modal" : ""}`} /> <span id="product_dialog_product_info">{this.props.info};</span>

@@ -821,6 +821,8 @@
     "product.review_modal": "レビュー：",
     "product.status_modal": "商品状態：",
     "product.take_it_in_cart": "カートに入れる",
-    "product.taken_in_cart": "カートに入れました"
+    "product.taken_in_cart": "カートに入れました",
+    "cart.list": "カート一覧",
+    "cart.buy": "購入"
   }
 }

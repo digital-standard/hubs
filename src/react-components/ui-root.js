@@ -221,7 +221,15 @@ class UIRoot extends Component {
     objectSrc: "",
     isShoppingListExpanded: false,
     isObjectListExpanded: false,
-    isPresenceListExpanded: false
+    isPresenceListExpanded: false,
+
+    productName: '',
+    productId: '',
+    productInfo: '',
+    productGenre: '',
+    productPrice: '',
+    productPic: '',
+    productStatus: ''
   };
 
   constructor(props) {
@@ -851,6 +859,22 @@ class UIRoot extends Component {
 
   toggleProductDialog = async() => {
     this.props.store.update({ activity: {hasOpenedProduct: true } });
+
+    const proId = localStorage.getItem('product-id');
+    const proName = localStorage.getItem( 'product-name');
+    const proInfo = localStorage.getItem( 'product-info');
+    const proGenre = localStorage.getItem( 'product-genre');
+    const proPrice = localStorage.getItem( 'product-price');
+    const proPic = localStorage.getItem( 'product-pic');
+    const proStatus = localStorage.getItem( 'product-status');
+
+    this.setState({ productName: proName});
+    this.setState({ productId: proId});
+    this.setState({ productInfo: proInfo});
+    this.setState({ productGenre: proGenre });
+    this.setState({ productPrice: proPrice });
+    this.setState({ productPic: proPic });
+    this.setState({ productStatus: proStatus });
     this.setState({ showProductDialog: !this.state.showProductDialog });
   }
 
@@ -2039,13 +2063,14 @@ class UIRoot extends Component {
                     <ProductDialog
                       isModal={true}
                       onSale = {true}
-                      name = {"Pickachu"}
-                      info = {"Pickachu can evolve"}
-                      photoPath = {"https://pbs.twimg.com/profile_images/801078530159165440/Dhy7OllF_400x400.jpg"}
-                      price = {500}
-                      genre = {"Pocket Monster"}
+                      id = {this.state.productId}
+                      name = {this.state.productName}
+                      info = {this.state.productInfo}
+                      photoPath = {this.state.productPic}
+                      price = {this.state.productPrice}
+                      genre = {this.state.productGenre}
                       review = {5}
-                      productStatus = {1}
+                      productStatus = {this.state.productStatus}
                       onClose={() => this.setState({ showProductDialog: false })}
                     />
                   )}
@@ -2059,7 +2084,7 @@ class UIRoot extends Component {
                 <ProductDialog
                   isModal={true}
                   onSale = {true}
-                  name = {"Pickachu"}
+                  name = {this.state.productName}
                   info = {"Pickachu can evolve"}
                   photoPath = {"https://pbs.twimg.com/profile_images/801078530159165440/Dhy7OllF_400x400.jpg"}
                   price = {500}
