@@ -34,31 +34,24 @@ export default class ProductDialog extends Component {
 
   componentDidMount() {
      // 1. create iframe to load a library
-    //  const script = document.createElement("script");
-    //  script.src = "https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y";
-    //  script.async = true;
+     var iframe = document.createElement('iframe');
+     var productDialogBase = document.getElementById('product_dialog_base');
+     iframe.style.width = String(productDialogBase.clientWidth * 0.9) + 'px';
+     iframe.style.height = String(document.documentElement.clientHeight * 0.7) + 'px';
+     iframe.style.backgroundColor = "#FFFFFF";
+     var head = document.getElementById('colorScript');
+     head.appendChild(iframe);
 
-    //  document.getElementById('colorScript').replaceWith(script)
+    // 2. some functions after loading a library 
+    iframe.onload = function() {
+    }
 
-
-    //  var iframe = document.createElement('iframe');
-    //  var productDialogBase = document.getElementById('product_dialog_base');
-    //  iframe.style.width = String(productDialogBase.clientWidth * 0.9) + 'px';
-    //  iframe.style.height = String(document.documentElement.clientHeight * 0.7) + 'px';
-    //  iframe.style.backgroundColor = "#FFFFFF";
-    //  var head = document.getElementById('colorScript');
-    //  head.appendChild(iframe);
-
-    // // 2. some functions after loading a library 
-    // iframe.onload = function() {
-    // }
-
-    // // 3. write sctipt tag in iframe
-    // var html = '<body><script src="https://digirooms.thebase.in/items/30108647/widget/large"><\/script><\/body>';
-    // var iframeDocument = iframe.contentWindow.document;
-    // iframeDocument.open();
-    // iframeDocument.write(html);
-    // iframeDocument.close();
+    // 3. write sctipt tag in iframe
+    var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y"><\/script><\/body>';
+    var iframeDocument = iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.write(html);
+    iframeDocument.close();
   }
 
   render(){
@@ -74,15 +67,7 @@ export default class ProductDialog extends Component {
     return(
       <div id="product_dialog_base" className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
-        {/*<div id='colorScript' /> */}
-        <form action="https://digi-rooms.easy-myshop.jp/c-cart-prev?fic=A000000001" method="POST"  accept-charset="UTF-8">
-          <input type="hidden" name="item_code" value="A000000001" /><input type="hidden" name="dummy" value="&amp;#65533;" />
-            数量:
-            <select name="item_count">
-              <option value="1">1</option>
-            </select>
-          <input type="submit" value="カートに入れる" />
-        </form>
+        <div id='colorScript' />
         <WithHoverSound>
           <button className={styles.close} onClick={() => this.props.onClose()}>
             <i>
