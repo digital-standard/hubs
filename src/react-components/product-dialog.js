@@ -33,19 +33,11 @@ export default class ProductDialog extends Component {
   };
 
   componentDidMount() {
-    // const {async} = this.props;
-    // const script = document.createElement("script");
-
-    // script.src = 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=cloth_blue&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y';
-    // script.type = 'text/javascript';
-    // script.charset ='euc-jp';
-    // script.async = async || false;
-
-    // document.getElementById('colorScript').replaceWith(script)
      // 1. create iframe to load a library
      var iframe = document.createElement('iframe');
-     iframe.style.width = '600px';
-     iframe.style.height = '800px';
+     var productDialogBase = document.getElementById('product_dialog_base');
+     iframe.style.width = String(productDialogBase.clientWidth * 0.9) + 'px';
+     iframe.style.height = String(document.documentElement.clientHeight * 0.7) + 'px';
      iframe.style.backgroundColor = "#FFFFFF";
      var head = document.getElementById('colorScript');
      head.appendChild(iframe);
@@ -55,7 +47,7 @@ export default class ProductDialog extends Component {
     }
 
     // 3. write sctipt tag in iframe
-    var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=cloth_blue&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y"><\/script><\/body>';
+    var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y"><\/script><\/body>';
     var iframeDocument = iframe.contentWindow.document;
     iframeDocument.open();
     iframeDocument.write(html);
@@ -73,15 +65,9 @@ export default class ProductDialog extends Component {
     }
 
     return(
-      <div className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
+      <div id="product_dialog_base" className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
-        <div>
-          <span id="product_dialog_product_id">{this.props.id};</span>
-        </div>
-        <div>
-          <FormattedMessage id={`product.name${this.props.name ? "_modal" : ""}`} /> <span id="product_dialog_product_name">{this.props.name};</span>
-        </div>
-        <div id='colorScript'/>
+        <div id='colorScript' />
         <WithHoverSound>
           <button className={styles.close} onClick={() => this.props.onClose()}>
             <i>
