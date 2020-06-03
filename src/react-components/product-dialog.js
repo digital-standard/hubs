@@ -75,7 +75,14 @@ export default class ProductDialog extends Component {
       <div id="product_dialog_base" className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
         {/*<div id='colorScript' /> */}
-        <iframe frameborder="0" height="480" width="320" src="https://digirooms.thebase.in/items/30108647/widget/large" ></iframe> 
+        <form action="https://digi-rooms.easy-myshop.jp/c-cart-prev?fic=A000000001" method="POST"  accept-charset="UTF-8">
+          <input type="hidden" name="item_code" value="A000000001" /><input type="hidden" name="dummy" value="&amp;#65533;" />
+            数量:
+            <select name="item_count">
+              <option value="1">1</option>
+            </select>
+          <input type="submit" value="カートに入れる" />
+        </form>
         <WithHoverSound>
           <button className={styles.close} onClick={() => this.props.onClose()}>
             <i>
