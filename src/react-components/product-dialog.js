@@ -34,12 +34,12 @@ export default class ProductDialog extends Component {
 
   componentDidMount() {
      // 1. create iframe to load a library
-     const script = document.createElement("script");
-     script.src = "https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y";
-     //script.src = "https://digirooms.thebase.in/items/30108647/widget/large";
-     script.async = true;
+    //  const script = document.createElement("script");
+    //  script.src = "https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y";
+    //  script.async = true;
 
-     document.getElementById('colorScript').replaceWith(script)
+    //  document.getElementById('colorScript').replaceWith(script)
+
 
     //  var iframe = document.createElement('iframe');
     //  var productDialogBase = document.getElementById('product_dialog_base');
@@ -54,7 +54,7 @@ export default class ProductDialog extends Component {
     // }
 
     // // 3. write sctipt tag in iframe
-    // var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y"><\/script><\/body>';
+    // var html = '<body><script src="https://digirooms.thebase.in/items/30108647/widget/large"><\/script><\/body>';
     // var iframeDocument = iframe.contentWindow.document;
     // iframeDocument.open();
     // iframeDocument.write(html);
@@ -74,7 +74,8 @@ export default class ProductDialog extends Component {
     return(
       <div id="product_dialog_base" className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
-        <div id='colorScript' />
+        {/*<div id='colorScript' /> */}
+        <iframe frameborder="0" height="480" width="320" src="https://digirooms.thebase.in/items/30108647/widget/large" ></iframe> 
         <WithHoverSound>
           <button className={styles.close} onClick={() => this.props.onClose()}>
             <i>
