@@ -34,24 +34,31 @@ export default class ProductDialog extends Component {
 
   componentDidMount() {
      // 1. create iframe to load a library
-     var iframe = document.createElement('iframe');
-     var productDialogBase = document.getElementById('product_dialog_base');
-     iframe.style.width = String(productDialogBase.clientWidth * 0.9) + 'px';
-     iframe.style.height = String(document.documentElement.clientHeight * 0.7) + 'px';
-     iframe.style.backgroundColor = "#FFFFFF";
-     var head = document.getElementById('colorScript');
-     head.appendChild(iframe);
+     const script = document.createElement("script");
+     script.src = "https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y";
+     //script.src = "https://digirooms.thebase.in/items/30108647/widget/large";
+     script.async = true;
 
-    // 2. some functions after loading a library 
-    iframe.onload = function() {
-    }
+     document.getElementById('colorScript').replaceWith(script)
 
-    // 3. write sctipt tag in iframe
-    var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y"><\/script><\/body>';
-    var iframeDocument = iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(html);
-    iframeDocument.close();
+    //  var iframe = document.createElement('iframe');
+    //  var productDialogBase = document.getElementById('product_dialog_base');
+    //  iframe.style.width = String(productDialogBase.clientWidth * 0.9) + 'px';
+    //  iframe.style.height = String(document.documentElement.clientHeight * 0.7) + 'px';
+    //  iframe.style.backgroundColor = "#FFFFFF";
+    //  var head = document.getElementById('colorScript');
+    //  head.appendChild(iframe);
+
+    // // 2. some functions after loading a library 
+    // iframe.onload = function() {
+    // }
+
+    // // 3. write sctipt tag in iframe
+    // var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y"><\/script><\/body>';
+    // var iframeDocument = iframe.contentWindow.document;
+    // iframeDocument.open();
+    // iframeDocument.write(html);
+    // iframeDocument.close();
   }
 
   render(){
