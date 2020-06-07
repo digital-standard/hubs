@@ -41,7 +41,24 @@ export class SuperSpawnerSystem {
       isPermitted &&
       isScriptTrigger
     ){
-      triggeredFunctions.pickachuSpawnerClick();
+      // trigger function
+      //triggeredFunctions.pickachuSpawnerClick();
+      if(state.hovered.object3D.name.indexOf('ShortJK') !== -1)
+      {
+        triggeredFunctions.shortJKSpawnerClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('ThreeDPoseTracker') !== -1)
+      {
+        triggeredFunctions.threeDPoseTrackerSpawnerClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('ThreeDPoseUB') !== -1)
+      {
+        triggeredFunctions.threeDPoseUnityBarracudaClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('Hacaro') !== -1)
+      {
+        triggeredFunctions.hacaroBeltClick();
+      }
     }
   }
 

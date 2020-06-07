@@ -13,7 +13,80 @@ export class triggeredFunctions{
             localStorage.setItem('product-genre','pocket monster');
             localStorage.setItem('product-price','750 yen');
             localStorage.setItem('product-status','新品');
-            localStorage.setItem('product-pic', 'https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20130819%2F20%2F2902520%2F10%2F454x480x031744bcea057e01d5c67be2.jpg%2F300%2F600&twidth=300&theight=600&qlt=80&res_format=jpg&op=r');
+            localStorage.setItem('product-script-src','https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=cloth_blue&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
+            //localStorage.setItem('product-pic', 'https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20130819%2F20%2F2902520%2F10%2F454x480x031744bcea057e01d5c67be2.jpg%2F300%2F600&twidth=300&theight=600&qlt=80&res_format=jpg&op=r');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+    static shortJKSpawnerClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('product-name','Short JK(非売品)');
+            localStorage.setItem('product-id','2');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151542346&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+  static threeDPoseTrackerSpawnerClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('product-name','ThreeDPose Tracker');
+            localStorage.setItem('product-id','3');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151531123&style=normal_gray&name=y&img=y&expl=y&stock=n&price=y&optview=n&inq=n&sk=y');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+  static threeDPoseUnityBarracudaClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('product-name','ThreeDPose UnityBarracuda');
+            localStorage.setItem('product-id','4');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151522209&style=normal_gray&name=y&img=y&expl=y&stock=n&price=y&optview=n&inq=y&sk=y');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+  static hacaroBeltClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('product-name','Hacaroベルト');
+            localStorage.setItem('product-id','5');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151522475&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }

@@ -228,8 +228,8 @@ class UIRoot extends Component {
     productInfo: '',
     productGenre: '',
     productPrice: '',
-    productPic: '',
-    productStatus: ''
+    productStatus: '',
+    productScriptSrc: ''
   };
 
   constructor(props) {
@@ -867,15 +867,16 @@ class UIRoot extends Component {
     const proPrice = localStorage.getItem( 'product-price');
     const proPic = localStorage.getItem( 'product-pic');
     const proStatus = localStorage.getItem( 'product-status');
+    const proScriptSrc = localStorage.getItem('product-script-src');
 
     this.setState({ productName: proName});
     this.setState({ productId: proId});
     this.setState({ productInfo: proInfo});
     this.setState({ productGenre: proGenre });
     this.setState({ productPrice: proPrice });
-    this.setState({ productPic: proPic });
     this.setState({ productStatus: proStatus });
     this.setState({ showProductDialog: !this.state.showProductDialog });
+    this.setState({ productScriptSrc: proScriptSrc });
   }
 
   createObject = media => {
@@ -2066,11 +2067,11 @@ class UIRoot extends Component {
                       id = {this.state.productId}
                       name = {this.state.productName}
                       info = {this.state.productInfo}
-                      photoPath = {this.state.productPic}
                       price = {this.state.productPrice}
                       genre = {this.state.productGenre}
                       review = {5}
                       productStatus = {this.state.productStatus}
+                      scriptSrc = {this.state.productScriptSrc}
                       onClose={() => this.setState({ showProductDialog: false })}
                     />
                   )}
@@ -2091,6 +2092,7 @@ class UIRoot extends Component {
                   genre = {"Pocket Monster"}
                   review = {5}
                   productStatus = {1}
+                  productScriptSrc = {this.state.productScriptSrc}
                   onClose={() => this.setState({ showProductDialog: false })}
                 />
               )}
