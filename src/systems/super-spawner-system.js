@@ -59,6 +59,18 @@ export class SuperSpawnerSystem {
       {
         triggeredFunctions.hacaroBeltClick();
       }
+      else if(state.hovered.object3D.name.indexOf('tennisball') !== -1)
+      {
+        triggeredFunctions.tennisBallClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('shoes') !== -1)
+      {
+        triggeredFunctions.shoesClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('guide') !== -1)
+      {
+        triggeredFunctions.guideClick();
+      }
     }
   }
 

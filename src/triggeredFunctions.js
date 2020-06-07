@@ -1,4 +1,4 @@
-import { isValidElement } from "react";
+import {Howl} from 'howler';
 
 export class triggeredFunctions{
     static pickachuSpawnerClick() {
@@ -89,6 +89,63 @@ export class triggeredFunctions{
             localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151522475&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+    static shoesClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('product-name','登山靴');
+            localStorage.setItem('product-id','6');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151591507&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+    static tennisBallClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('product-name','テニスボール');
+            localStorage.setItem('product-id','7');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151591533&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+    static guideClick() {
+        // // call guide announce
+        // var guideAudio = new Audio(); //('triggerGuideAudio.mp3');
+        // guideAudio.src = "./triggerGuideAudio.mp3";
+        // guideAudio.load();
+        // guideAudio.play();  // 再生
+        // //guideAudio.pause();  // 一時停止
+
+        const sound = new Howl({
+            src: './triggerGuideAudio.mp3'
+        });
+        sound.play();
+
+        if (sound.playing()) {
+            alert('stopped');
+            sound.stop();
+        } else {
+            sound.play();
         }
     }
 }
