@@ -57,15 +57,6 @@ export default class ProductDialog extends Component {
   }
 
   render(){
-    let proStatus = "";
-    if(this.props.productStatus === 1)
-    {
-      proStatus = "新品";
-    }
-    else{
-      proStatus = "中古";
-    }
-
     return(
       <div id="product_dialog_base" className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}

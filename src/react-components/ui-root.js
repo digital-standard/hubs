@@ -34,7 +34,6 @@ import Loader from "./loader";
 import AutoExitWarning from "./auto-exit-warning";
 import { TwoDEntryButton, GenericEntryButton, DaydreamEntryButton } from "./entry-buttons.js";
 import ProfileEntryPanel from "./profile-entry-panel";
-import ShoppingListPanel from "./shopping-list-panel";
 import MediaBrowser from "./media-browser";
 
 import CreateObjectDialog from "./create-object-dialog.js";
@@ -68,7 +67,6 @@ import MicLevelWidget from "./mic-level-widget.js";
 import PreferencesScreen from "./preferences-screen.js";
 import OutputLevelWidget from "./output-level-widget.js";
 import PresenceLog from "./presence-log.js";
-import ShoppingList from "./shopping-list.js";
 import PresenceList from "./presence-list.js";
 import ObjectList from "./object-list.js";
 import SettingsMenu from "./settings-menu.js";
@@ -117,7 +115,7 @@ const isMobileVR = AFRAME.utils.device.isMobileVR();
 const isMobilePhoneOrVR = isMobile || isMobileVR;
 const isFirefoxReality = isMobileVR && navigator.userAgent.match(/Firefox/);
 
-const AUTO_EXIT_TIMER_SECONDS = 10;
+const AUTO_EXIT_TIMER_SECONDS = 300;// 10;
 
 class UIRoot extends Component {
   willCompileAndUploadMaterials = false;
@@ -219,7 +217,6 @@ class UIRoot extends Component {
 
     objectInfo: null,
     objectSrc: "",
-    isShoppingListExpanded: false,
     isObjectListExpanded: false,
     isPresenceListExpanded: false,
 
@@ -291,6 +288,8 @@ class UIRoot extends Component {
   };
 
   onIdleDetected = () => {
+    return; // dont make idele detecter work
+
     if (
       this.props.disableAutoExitOnIdle ||
       this.state.isStreaming ||
@@ -1724,20 +1723,6 @@ class UIRoot extends Component {
                 />
               )}
             <StateRoute
-             stateKey="overlay"
-             stateValue="shopping"
-             history={this.props.history}
-             render={props => (
-               <ShoppingListPanel
-                 {...props}
-                 displayNameOverride={displayNameOverride}
-                 finished={() => this.pushHistoryState()}
-                 onClose={() => this.pushHistoryState()}
-                 store={this.props.store}
-               />
-             )}
-            />
-            <StateRoute
               stateKey="overlay"
               stateValue="profile"
               history={this.props.history}
@@ -2209,21 +2194,6 @@ class UIRoot extends Component {
               </button>
             )}
             {streamingTip}
-
-            <ShoppingList
-              history = {this.props.history}
-              sessionId = {this.props.sessionId}
-              scene={this.props.scene}
-              expanded={!this.state.isObjectListExpanded && !this.state.isPresenceListExpanded && this.state.isShoppingListExpanded}
-              onExpand={expand => {
-                if (expand) {
-                  this.setState({ isShoppingListExpanded: expand, isObjectListExpanded: false, isPresenceListExpanded: false });
-                } else {
-                  this.setState({ isShoppingListExpanded: expand });
-                }
-              }}
-            />
-
             <ObjectList
               scene={this.props.scene}
               onExpand={(expand, uninspect) => {
