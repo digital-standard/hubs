@@ -22,7 +22,10 @@ function registerRootSceneComponent(componentName) {
 registerRootSceneComponent("fog");
 registerRootSceneComponent("background");
 
-AFRAME.GLTFModelPlus.registerComponent("duck", "duck");
+AFRAME.GLTFModelPlus.registerComponent("duck", "duck", el => {
+  el.setAttribute("duck", "");
+  el.setAttribute("quack", { quackPercentage: 0.1 });
+});
 AFRAME.GLTFModelPlus.registerComponent("quack", "quack");
 AFRAME.GLTFModelPlus.registerComponent("sound", "sound");
 AFRAME.GLTFModelPlus.registerComponent("css-class", "css-class");
@@ -77,6 +80,7 @@ AFRAME.GLTFModelPlus.registerComponent("scale-audio-feedback", "scale-audio-feed
 AFRAME.GLTFModelPlus.registerComponent("morph-audio-feedback", "morph-audio-feedback");
 AFRAME.GLTFModelPlus.registerComponent("animation-mixer", "animation-mixer");
 AFRAME.GLTFModelPlus.registerComponent("loop-animation", "loop-animation");
+AFRAME.GLTFModelPlus.registerComponent("uv-scroll", "uv-scroll");
 AFRAME.GLTFModelPlus.registerComponent(
   "box-collider",
   "shape-helper",

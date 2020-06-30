@@ -53,7 +53,7 @@ export default class SceneEntryManager {
   enterScene = async (mediaStream, enterInVR, muteOnEntry) => {
     document.getElementById("viewing-camera").removeAttribute("scene-preview-camera");
 
-    if (isDebug) {
+    if (isDebug && NAF.connection.adapter.session) {
       NAF.connection.adapter.session.options.verbose = true;
     }
 
@@ -423,6 +423,12 @@ export default class SceneEntryManager {
 
       if (videoTracks.length > 0) {
         newStream.getVideoTracks().forEach(track => mediaStream.addTrack(track));
+
+        if (newStream && newStream.getAudioTracks().length > 0) {
+          const audioSystem = this.scene.systems["hubs-systems"].audioSystem;
+          audioSystem.addStreamToOutboundAudio("screenshare", newStream);
+        }
+
         await NAF.connection.adapter.setLocalMediaStream(mediaStream);
         currentVideoShareEntity = spawnMediaInfrontOfPlayer(mediaStream, undefined);
 
@@ -442,6 +448,7 @@ export default class SceneEntryManager {
           width: isIOS ? { max: 1280 } : { max: 1280, ideal: 720 },
           frameRate: 30
         }
+        //TODO: Capture audio from camera?
       });
     });
 
@@ -455,7 +462,11 @@ export default class SceneEntryManager {
             height: 720,
             frameRate: 30
           },
-          audio: true
+          audio: {
+            echoCancellation: window.APP.store.state.preferences.disableEchoCancellation === true ? false : true,
+            noiseSuppression: window.APP.store.state.preferences.disableNoiseSuppression === true ? false : true,
+            autoGainControl: window.APP.store.state.preferences.disableAutoGainControl === true ? false : true
+          }
         },
         true
       );
@@ -471,8 +482,12 @@ export default class SceneEntryManager {
       }
 
       for (const track of mediaStream.getVideoTracks()) {
+        track.stop(); // Stop video track to remove the "Stop screen sharing" bar right away.
         mediaStream.removeTrack(track);
       }
+
+      const audioSystem = this.scene.systems["hubs-systems"].audioSystem;
+      audioSystem.removeStreamFromOutboundAudio("screenshare");
 
       await NAF.connection.adapter.setLocalMediaStream(mediaStream);
       currentVideoShareEntity = null;
