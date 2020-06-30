@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { IntlProvider, addLocaleData } from "react-intl";
 import ja from "react-intl/locale-data/ja";
 import en from "react-intl/locale-data/en";
 import { FormattedMessage, IntlProvider, addLocaleData } from "react-intl";
