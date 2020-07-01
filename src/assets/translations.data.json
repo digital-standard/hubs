@@ -831,7 +831,9 @@
     "product.take_it_in_cart": "カートに入れる",
     "product.taken_in_cart": "カートに入れました",
     "cart.list": "カート一覧",
-    "cart.buy": "購入"
+    "cart.buy": "購入",
+    "art.name_modal": "絵画名： ",
+    "art.info_modal": "絵画情報"
   },
   "cn-zh": {
     "app-name": "App",

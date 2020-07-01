@@ -51,6 +51,7 @@ export const SCHEMA = {
         hasHoveredInWorldHud: { type: "boolean" },
         hasOpenedShare: { type: "boolean" },
         hasOpenedProduct: {type: "boolean" },
+        hasOpenedArt: {type: "boolean" },
         entryCount: { type: "number" }
       }
     },

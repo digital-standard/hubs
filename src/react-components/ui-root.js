@@ -16,6 +16,7 @@ import styles from "../assets/stylesheets/ui-root.scss";
 import entryStyles from "../assets/stylesheets/entry.scss";
 import inviteStyles from "../assets/stylesheets/invite-dialog.scss";
 import productStyles from "../assets/stylesheets/product-dialog.scss";
+import artStyles from "../assets/stylesheets/art-dialog.scss";
 import { ReactAudioContext } from "./wrap-with-audio";
 import {
   pushHistoryState,
@@ -42,6 +43,7 @@ import AvatarUrlDialog from "./avatar-url-dialog.js";
 import InviteDialog from "./invite-dialog.js";
 import InviteTeamDialog from "./invite-team-dialog.js";
 import ProductDialog from "./product-dialog.js";
+import ArtDialog from "./art-dialog.js";
 import LinkDialog from "./link-dialog.js";
 import SignInDialog from "./sign-in-dialog.js";
 import RoomSettingsDialog from "./room-settings-dialog.js";
@@ -836,6 +838,11 @@ class UIRoot extends Component {
     this.setState({ showProductDialog: true });
   };
 
+  showArtDialog = () => {
+    this.props.store.update({ activity: { hasOpenedArt: true } });
+    this.setState({ showArtDialog: true });
+  };
+
   toggleProductDialog = async() => {
     this.props.store.update({ activity: {hasOpenedProduct: true } });
 
@@ -856,6 +863,19 @@ class UIRoot extends Component {
     this.setState({ productStatus: proStatus });
     this.setState({ showProductDialog: !this.state.showProductDialog });
     this.setState({ productScriptSrc: proScriptSrc });
+  }
+
+  toggleArtDialog = async() => {
+    this.props.store.update({ activity: {hasOpenedArt: true } });
+
+    const aName = localStorage.getItem( 'art-name');
+    const aInfo = localStorage.getItem( 'art-info');
+    const aPic = localStorage.getItem( 'art-pic');
+
+    this.setState({ artName: aName});
+    this.setState({ artInfo: aInfo});
+    this.setState({ artPic: aPic });
+    this.setState({ showArtDialog: !this.state.showArtDialog });
   }
 
   createObject = media => {
@@ -1622,17 +1642,6 @@ class UIRoot extends Component {
       !this.props.store.state.activity.hasOpenedShare &&
       this.occupantCount() <= 1;
 
-    const showProductTip = 
-      !hasTopTip &&
-      !entered &&
-      !embed &&
-      !preload &&
-      !watching &&
-      !hasTopTip &&
-      !inEntryFlow &&
-      !this.props.store.state.activity.hasOpenedProduct &&
-      this.occupantCount() <= 1;
-
     const showChooseSceneButton =
       !showObjectInfo &&
       !entered &&
@@ -2009,6 +2018,20 @@ class UIRoot extends Component {
                       onClose={() => this.setState({ showProductDialog: false })}
                     />
                   )}
+                   {embed && (
+                    <a href={baseUrl} className={artStyles.enterButton} target="_blank" rel="noopener noreferrer">
+                      <FormattedMessage id="絵画情報" />
+                    </a>
+                  )}
+                  {this.state.showArtDialog && (
+                    <ArtDialog
+                      isModal={true}
+                      name = {this.state.artName}
+                      info = {this.state.artInfo}
+                      pic = {this.state.artPic}
+                      onClose={() => this.setState({ showArtDialog: false })}
+                    />
+                  )}
                 </div>
               )}
             <StateRoute
@@ -2031,6 +2054,20 @@ class UIRoot extends Component {
                 />
               )}
             />
+            <StateRoute
+              stateKey="overlay"
+              stateValue="art"
+              history={this.props.history}
+              render={() => (
+                <ArtDialog
+                  isModal={true}
+                  name = {this.state.artName}
+                  info = {this.state.artInfo}
+                  pic = {this.state.artPic}
+                  onClose={() => this.setState({ showArtDialog: false })}
+                />
+              )}
+            />
             {!this.state.frozen &&
               !watching &&
               !preload && (
@@ -2050,6 +2087,19 @@ class UIRoot extends Component {
                           [productStyles.productButtonLowered]: hasTopTip
                         })}
                         onClick={() => this.toggleProductDialog()}
+                      >
+                        {/*ボタン名無（画面に表示されない）のボタンにする <FormattedMessage id="entry.product-button" /> */}
+                      </button>
+                    )}
+                  {!embed &&
+                    !streaming && (
+                      <button
+                        className={classNames({
+                          [artStyles.artButton]: true,
+                          [artStyles.hideSmallScreens]: this.occupantCount() > 1 && entered,
+                          [artStyles.artButtonLowered]: hasTopTip
+                        })}
+                        onClick={() => this.toggleArtDialog()}
                       >
                         {/*ボタン名無（画面に表示されない）のボタンにする <FormattedMessage id="entry.product-button" /> */}
                       </button>

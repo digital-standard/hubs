@@ -71,6 +71,10 @@ export class SuperSpawnerSystem {
       {
         triggeredFunctions.guideClick();
       }
+      else if(state.hovered.object3D.name.indexOf('sick') !== -1)
+      {
+        triggeredFunctions.sickArtClick();
+      }
     }
   }
 

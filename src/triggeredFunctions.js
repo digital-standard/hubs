@@ -148,4 +148,18 @@ export class triggeredFunctions{
             sound.play();
         }
     }
+
+    static sickArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','看病');
+            localStorage.setItem('art-info','病人と看病する人です。');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/8790ec31-b8ca-45d7-bccc-e02f4f950e6f.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
 }
