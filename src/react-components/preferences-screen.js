@@ -9,6 +9,7 @@ import { FormattedMessage, IntlProvider, addLocaleData } from "react-intl";
 import styles from "../assets/stylesheets/preferences-screen.scss";
 import { lang, messages } from "../utils/i18n";
 
+const isMobile = AFRAME.utils.device.isMobile() || AFRAME.utils.device.isMobileVR();
 addLocaleData([...ja, ...en]);
 
 function round(step, n) {
