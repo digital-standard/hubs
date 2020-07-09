@@ -20,109 +20,55 @@ export class triggeredFunctions{
         }
     }
 
-    static shortJKSpawnerClick() {
+  static hacaroBlackClick() {
         // check if product modal is opend by searching one of the element of the modal
         var el = document.getElementById("product_dialog_product_name");
         if(!el)
         {
             // write product info on session
-            localStorage.setItem('product-name','Short JK(非売品)');
-            localStorage.setItem('product-id','2');
-            localStorage.setItem('product-info','');
-            localStorage.setItem('product-genre','');
-            localStorage.setItem('product-price','');
-            localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151542346&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y');
-
-            document.querySelectorAll('[class*=product-button]')[0].click();
-        }
-    }
-
-  static threeDPoseTrackerSpawnerClick() {
-        // check if product modal is opend by searching one of the element of the modal
-        var el = document.getElementById("product_dialog_product_name");
-        if(!el)
-        {
-            // write product info on session
-            localStorage.setItem('product-name','ThreeDPose Tracker');
-            localStorage.setItem('product-id','3');
-            localStorage.setItem('product-info','');
-            localStorage.setItem('product-genre','');
-            localStorage.setItem('product-price','');
-            localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151531123&style=normal_gray&name=y&img=y&expl=y&stock=n&price=y&optview=n&inq=n&sk=y');
-
-            document.querySelectorAll('[class*=product-button]')[0].click();
-        }
-    }
-
-  static threeDPoseUnityBarracudaClick() {
-        // check if product modal is opend by searching one of the element of the modal
-        var el = document.getElementById("product_dialog_product_name");
-        if(!el)
-        {
-            // write product info on session
-            localStorage.setItem('product-name','ThreeDPose UnityBarracuda');
-            localStorage.setItem('product-id','4');
-            localStorage.setItem('product-info','');
-            localStorage.setItem('product-genre','');
-            localStorage.setItem('product-price','');
-            localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151522209&style=normal_gray&name=y&img=y&expl=y&stock=n&price=y&optview=n&inq=y&sk=y');
-
-            document.querySelectorAll('[class*=product-button]')[0].click();
-        }
-    }
-
-  static hacaroBeltClick() {
-        // check if product modal is opend by searching one of the element of the modal
-        var el = document.getElementById("product_dialog_product_name");
-        if(!el)
-        {
-            // write product info on session
-            localStorage.setItem('product-name','Hacaroベルト');
+            localStorage.setItem('product-name','測定ベルト（Hacaroベルト）');
             localStorage.setItem('product-id','5');
             localStorage.setItem('product-info','');
             localStorage.setItem('product-genre','');
             localStorage.setItem('product-price','');
             localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151522475&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
+            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152206459&style=wood1&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }
     }
 
-    static shoesClick() {
+    static hacaroBlueClick() {
         // check if product modal is opend by searching one of the element of the modal
         var el = document.getElementById("product_dialog_product_name");
         if(!el)
         {
             // write product info on session
-            localStorage.setItem('product-name','登山靴');
+            localStorage.setItem('product-name','測定ベルト（Qualityベルト・ブルー）');
             localStorage.setItem('product-id','6');
             localStorage.setItem('product-info','');
             localStorage.setItem('product-genre','');
             localStorage.setItem('product-price','');
             localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151591507&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
+            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152183768&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }
     }
 
-    static tennisBallClick() {
+    static hacaroPinkClick() {
         // check if product modal is opend by searching one of the element of the modal
         var el = document.getElementById("product_dialog_product_name");
         if(!el)
         {
             // write product info on session
-            localStorage.setItem('product-name','テニスボール');
+            localStorage.setItem('product-name','測定ベルト（Qualityベルト・ピンク）');
             localStorage.setItem('product-id','7');
             localStorage.setItem('product-info','');
             localStorage.setItem('product-genre','');
             localStorage.setItem('product-price','');
             localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151591533&style=normal_gray&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=y&sk=y');
+            localStorage.setItem('product-script-src', "<script type='text/javascript' src='https://digista.shop-pro.jp/?mode=cartjs&pid=152183818&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y' charset='euc-jp'></script>");
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }
@@ -162,4 +108,118 @@ export class triggeredFunctions{
             document.querySelectorAll('[class*=art-button]')[0].click();
         }
     }
+
+    static boucherArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','フランソワ・ブーシェ');
+            localStorage.setItem('art-info','Portrait présumé de Marie-Emilie Baudouin, fille du peintre');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/0a8c562c-28b7-43f2-a934-215fc8ee4419.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static bunelArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','フランソワ・ブネル');
+            localStorage.setItem('art-info','La procession de la ligue dans les rues de Paris, le 4 février 1593');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/68189fa1-7f99-4242-a417-74e678d1784b.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static cezanneArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','ポール・セザンヌ');
+            localStorage.setItem('art-info','Portrait of Ambroise Vollard');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/a5d018a4-7ef3-4b0c-9ae8-987653834b77.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static chalonArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','ジョン・ジェームス・シャロン');
+            localStorage.setItem('art-info','Le Marché et la fontaine des Innocents');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/e0ec7574-c3f9-4ad1-be73-c2b848ad6531.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static gerardArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','フランソワ・ジェラール');
+            localStorage.setItem('art-info','Portrait de Juliette Récamier, née Bernard (1777-1849).');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/2cf37f23-d3a5-4a91-8727-660b532745db.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static modiglianiArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','アメデオ・モディリアーニ');
+            localStorage.setItem('art-info','Femme aux yeux bleus');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/3664865c-8cf8-4c61-986c-041645325335.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static monetArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','クロード・モネ');
+            localStorage.setItem('art-info',"Soleil couchant sur la Seine à Lavacourt, effet d'hiver");
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/598f167e-1a64-4619-8e7f-5ce0a1c50b09.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+    static redouteArtClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','ピエール＝ジョゼフ・ルドゥーテ');
+            localStorage.setItem('art-info','Papaver Somniferum');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/9055f3b2-adc5-4d4b-9aed-f2aa2acedfb0.jpg');
+
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
+
+
 }

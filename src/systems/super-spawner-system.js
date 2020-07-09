@@ -42,30 +42,17 @@ export class SuperSpawnerSystem {
       isScriptTrigger
     ){
       // trigger function
-      //triggeredFunctions.pickachuSpawnerClick();
-      if(state.hovered.object3D.name.indexOf('ShortJK') !== -1)
+      if(state.hovered.object3D.name.indexOf('hacaro_black') !== -1)
       {
-        triggeredFunctions.shortJKSpawnerClick();
+        triggeredFunctions.hacaroBlackClick();
       }
-      else if(state.hovered.object3D.name.indexOf('ThreeDPoseTracker') !== -1)
+      else if(state.hovered.object3D.name.indexOf('hacaro_blue') !== -1)
       {
-        triggeredFunctions.threeDPoseTrackerSpawnerClick();
+        triggeredFunctions.hacaroBlueClick();
       }
-      else if(state.hovered.object3D.name.indexOf('ThreeDPoseUB') !== -1)
+      else if(state.hovered.object3D.name.indexOf('hacaro_pink') !== -1)
       {
-        triggeredFunctions.threeDPoseUnityBarracudaClick();
-      }
-      else if(state.hovered.object3D.name.indexOf('Hacaro') !== -1)
-      {
-        triggeredFunctions.hacaroBeltClick();
-      }
-      else if(state.hovered.object3D.name.indexOf('tennisball') !== -1)
-      {
-        triggeredFunctions.tennisBallClick();
-      }
-      else if(state.hovered.object3D.name.indexOf('shoes') !== -1)
-      {
-        triggeredFunctions.shoesClick();
+        triggeredFunctions.hacaroPinkClick();
       }
       else if(state.hovered.object3D.name.indexOf('guide') !== -1)
       {
@@ -74,6 +61,38 @@ export class SuperSpawnerSystem {
       else if(state.hovered.object3D.name.indexOf('sick') !== -1)
       {
         triggeredFunctions.sickArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('boucher') !== -1)
+      {
+        triggeredFunctions.boucherArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('bunel') !== -1)
+      {
+        triggeredFunctions.bunelArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('cezanne') !== -1)
+      {
+        triggeredFunctions.cezanneArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('chalon') !== -1)
+      {
+        triggeredFunctions.chalonArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('gerard') !== -1)
+      {
+        triggeredFunctions.gerardArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('modigliani') !== -1)
+      {
+        triggeredFunctions.modiglianiArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('monet') !== -1)
+      {
+        triggeredFunctions.monetArtClick();
+      }
+      else if(state.hovered.object3D.name.indexOf('redoute') !== -1)
+      {
+        triggeredFunctions.redouteArtClick();
       }
     }
   }

@@ -12,6 +12,10 @@ import { share, canShare } from "../utils/share";
 
 import { WithHoverSound } from "./wrap-with-audio";
 import styles from "../assets/stylesheets/invite-dialog.scss";
+import lineIcon from "../assets/images/square-default.png"
+import twitterIcon from "../assets/images/twitter.jpg"
+import { LINEButton } from  'react-social-sharebuttons';
+const aaaa = Math.random().toString();
 
 function pad(num, size) {
   let s = `${num}`;
@@ -57,7 +61,12 @@ export default class InviteDialog extends Component {
     const entryCodeString = pad(entryCode, 6);
     const shortLinkText = `${configs.SHORTLINK_DOMAIN}/${this.props.hubId}`;
     const shortLink = "https://" + shortLinkText;
+    const tmpLineShortLink = shortLink + "/?openExternalBrowser=1"
+    const lineShortLink = "https://social-plugins.line.me/lineit/share?url=" + tmpLineShortLink
     const embedText = `<iframe src="${embedUrl}" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;"></iframe>`;
+
+    let text = lineShortLink;
+    let image = "40x40";
 
     return (
       <div className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
@@ -74,6 +83,10 @@ export default class InviteDialog extends Component {
               <span>{this.state.copyButtonActive ? "copied!" : "copy"}</span>
             </button>
           </WithHoverSound>
+
+          {/* <a href={lineShortLink}><img src= {lineIcon} alt="" border="0"/></a> */}
+          <LINEButton text={text} image={image} />
+
           {this.props.allowShare &&
             canShare() && (
               <WithHoverSound>
@@ -85,9 +98,8 @@ export default class InviteDialog extends Component {
           {this.props.allowShare &&
             !canShare() && (
               <WithHoverSound>
-                <button className={styles.linkButton} onClick={this.shareClicked.bind(this, shortLink)}>
-                  <FormattedMessage id="invite.tweet" />
-                </button>
+                <img src={twitterIcon} height="40" width="40" onClick={this.shareClicked.bind(this, shortLink)} />
+                {/* <button className="tweetButton" img={} onClick={this.shareClicked.bind(this, shortLink)}/> */}
               </WithHoverSound>
             )}
         </div>
