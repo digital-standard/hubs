@@ -32,7 +32,7 @@ export class triggeredFunctions{
             localStorage.setItem('product-genre','');
             localStorage.setItem('product-price','');
             localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152206459&style=wood1&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y');
+            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152206459&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=n');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }
@@ -50,7 +50,7 @@ export class triggeredFunctions{
             localStorage.setItem('product-genre','');
             localStorage.setItem('product-price','');
             localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152183768&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y');
+            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152183768&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=n');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }
@@ -68,7 +68,23 @@ export class triggeredFunctions{
             localStorage.setItem('product-genre','');
             localStorage.setItem('product-price','');
             localStorage.setItem('product-status','');
-            localStorage.setItem('product-script-src', "<script type='text/javascript' src='https://digista.shop-pro.jp/?mode=cartjs&pid=152183818&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y' charset='euc-jp'></script>");
+            localStorage.setItem('product-script-src', 'https://digista.shop-pro.jp/?mode=cartjs&pid=152183818&style=normal_gray&name=n&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=n');
+
+            document.querySelectorAll('[class*=product-button]')[0].click();
+        }
+    }
+
+    static tokutei1Click() {
+        var el = document.getElementById("product_dialog_product_name");
+        if(!el)
+        {
+            localStorage.setItem('product-name','特定商取引法に基づく表記');
+            localStorage.setItem('product-id','8');
+            localStorage.setItem('product-info','');
+            localStorage.setItem('product-genre','tokutei');
+            localStorage.setItem('product-price','');
+            localStorage.setItem('product-status','');
+            localStorage.setItem('product-script-src', 'https://digital-standard.com/specific-commerce/');
 
             document.querySelectorAll('[class*=product-button]')[0].click();
         }

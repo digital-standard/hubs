@@ -94,6 +94,10 @@ export class SuperSpawnerSystem {
       {
         triggeredFunctions.redouteArtClick();
       }
+      else if(state.hovered.object3D.name.indexOf('tokutei_1') !== -1)
+      {
+        triggeredFunctions.tokutei1Click();
+      }
     }
   }
 

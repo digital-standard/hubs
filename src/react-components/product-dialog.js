@@ -40,6 +40,11 @@ export default class ProductDialog extends Component {
      iframe.style.width = String(productDialogBase.clientWidth * 0.9) + 'px';
      iframe.style.height = String(document.documentElement.clientHeight * 0.7) + 'px';
      iframe.style.backgroundColor = "#FFFFFF";
+     if(this.props.genre == "tokutei")
+     {
+       iframe.src = this.props.scriptSrc;
+     }
+     
      var head = document.getElementById('colorScript');
      head.appendChild(iframe);
 
@@ -48,21 +53,25 @@ export default class ProductDialog extends Component {
     }
 
     // 3. write sctipt tag in iframe
-    //var html = '<body><script src="https://digi-rooms.shop-pro.jp/?mode=cartjs&pid=151476901&style=hemp&name=y&img=y&expl=y&stock=y&price=y&optview=n&inq=n&sk=y"><\/script><\/body>';
-    var html = '<body><script src="' + this.props.scriptSrc + '"><\/script><\/body>';
-    var iframeDocument = iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(html);
-    iframeDocument.close();
+    if(this.props.genre != "tokutei")
+    {
+      var html = '<body><script src="' + this.props.scriptSrc + '"><\/script><\/body>';
+      var iframeDocument = iframe.contentWindow.document;
+      iframeDocument.open();
+      iframeDocument.write(html);
+      iframeDocument.close();
+    }
   }
 
   render(){
     return(
       <div id="product_dialog_base" className={classNames({ [styles.dialog]: true, [styles.modal]: this.props.isModal })}>
         {!this.props.isModal && <div className={styles.attachPoint} />}
-        <div>
-          <FormattedMessage id={`product.name${this.props.name ? "_modal" : ""}`} /> <span id="product_dialog_product_name">{this.props.name};</span>
-        </div>
+        {this.props.genre != "tokutei" && (
+          <div>
+            <FormattedMessage id={`product.name${this.props.name ? "_modal" : ""}`} /> <span id="product_dialog_product_name">{this.props.name};</span>
+          </div>
+        )}
         <div id='colorScript' />
         <WithHoverSound>
           <button className={styles.close} onClick={() => this.props.onClose()}>
