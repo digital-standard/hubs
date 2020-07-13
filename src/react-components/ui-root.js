@@ -2039,7 +2039,7 @@ class UIRoot extends Component {
                       })}
                       onClick={() => this.toggleArtDialog()}
                     >
-                      <FormattedMessage id="entry.art-button" />
+                      {/* <FormattedMessage id="entry.art-button" /> */}
                     </button>
                   )}
                   {!embed &&
