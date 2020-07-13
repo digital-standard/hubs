@@ -62,7 +62,7 @@ export default class InviteDialog extends Component {
     const shortLinkText = `${configs.SHORTLINK_DOMAIN}/${this.props.hubId}`;
     const shortLink = "https://" + shortLinkText;
     const tmpLineShortLink = shortLink + "/?openExternalBrowser=1"
-    const lineShortLink = "https://social-plugins.line.me/lineit/share?url=" + tmpLineShortLink
+    const lineShortLink = tmpLineShortLink
     const embedText = `<iframe src="${embedUrl}" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;"></iframe>`;
 
     let text = lineShortLink;
