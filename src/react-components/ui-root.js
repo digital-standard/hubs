@@ -16,7 +16,7 @@ import styles from "../assets/stylesheets/ui-root.scss";
 import entryStyles from "../assets/stylesheets/entry.scss";
 import inviteStyles from "../assets/stylesheets/invite-dialog.scss";
 import productStyles from "../assets/stylesheets/product-dialog.scss";
-import artStyles from "../assets/stylesheets/art-dialog.scss";
+import artStyles from  "../assets/stylesheets/art-dialog.scss";
 import { ReactAudioContext } from "./wrap-with-audio";
 import {
   pushHistoryState,
@@ -1629,6 +1629,7 @@ class UIRoot extends Component {
       (hasDiscordBridges || (hasEmbedPresence && !this.props.embed)) && !this.state.broadcastTipDismissed;
 
     const showInviteButton = !showObjectInfo && !this.state.frozen && !watching && !preload;
+    const showArtButton = !showObjectInfo && !this.state.frozen && !watching && !preload;
 
     const showInviteTip =
       !showObjectInfo &&
@@ -2018,6 +2019,40 @@ class UIRoot extends Component {
                       onClose={() => this.setState({ showProductDialog: false })}
                     />
                   )}
+                </div>
+            )}
+            {showArtButton && (
+              <div
+                className={classNames({
+                  [artStyles.artContainer]: true,
+                  [artStyles.artContainerBelowHud]: entered,
+                  [artStyles.artContainerInverted]: this.state.ArtDialog
+                })}
+              >
+                {!embed &&
+                  !streaming && (
+                    <button
+                      className={classNames({
+                        [artStyles.artButton]: true,
+                        [artStyles.hideSmallScreens]: this.occupantCount() > 1 && entered,
+                        [artStyles.artButtonLowered]: hasTopTip
+                      })}
+                      onClick={() => this.toggleArtDialog()}
+                    >
+                      <FormattedMessage id="entry.art-button" />
+                    </button>
+                  )}
+                  {!embed &&
+                    this.occupantCount() > 1 &&
+                    !hasTopTip &&
+                    entered &&
+                    !streaming && (
+                      <button onClick={this.onMiniArtClicked} className={artStyles.artMiniButton}>
+                        <span>
+                         
+                        </span>
+                      </button>
+                    )}
                    {embed && (
                     <a href={baseUrl} className={artStyles.enterButton} target="_blank" rel="noopener noreferrer">
                       <FormattedMessage id="絵画情報" />
@@ -2033,7 +2068,7 @@ class UIRoot extends Component {
                     />
                   )}
                 </div>
-              )}
+            )}
             <StateRoute
               stateKey="overlay"
               stateValue="product"
@@ -2089,22 +2124,8 @@ class UIRoot extends Component {
                         onClick={() => this.toggleProductDialog()}
                       >
                         {/*ボタン名無（画面に表示されない）のボタンにする <FormattedMessage id="entry.product-button" /> */}
-                      </button>
-                    )}
-                  {!embed &&
-                    !streaming && (
-                      <button
-                        className={classNames({
-                          [artStyles.artButton]: true,
-                          [artStyles.hideSmallScreens]: this.occupantCount() > 1 && entered,
-                          [artStyles.artButtonLowered]: hasTopTip
-                        })}
-                        onClick={() => this.toggleArtDialog()}
-                      >
-                        {/*ボタン名無（画面に表示されない）のボタンにする <FormattedMessage id="entry.product-button" /> */}
-                      </button>
-                    )}
-
+                     </button>
+                  )}
                 {showInviteTip && (
                   <div className={styles.inviteTip}>
                     <div className={styles.inviteTipAttachPoint} />
