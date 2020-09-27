@@ -75,6 +75,7 @@
 
   :local(.product-button) {
     @extend %action-button;
+    display: none;
     pointer-events: auto;
     right: 150px;
     min-width: 0px;
