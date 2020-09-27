@@ -46,7 +46,7 @@ function useVerify() {
 function EmailVerifying() {
   return (
     <div className={styles.signInContainer}>
-      <h1>Email Verifying</h1>
+      <h1>Eメール有効化中</h1>
       <Loader />
     </div>
   );
@@ -58,8 +58,8 @@ function EmailVerified() {
 
   return (
     <div className={styles.signInContainer}>
-      <h1>Verification Complete</h1>
-      <b>Please close this browser window and return to {origin}.</b>
+      <h1>Eメール有効化完了</h1>
+      <b>このブラウザーウィンドウを閉じて {origin}へ戻ってください。</b>
     </div>
   );
 }
@@ -67,7 +67,7 @@ function EmailVerified() {
 function VerificationError({ error }) {
   return (
     <div className={styles.signInContainer}>
-      <h1>Error Verifying Email</h1>
+      <h1>Eメール有効化エラー</h1>
       <b>{(error && error.message) || "Unknown Error"}</b>
     </div>
   );
