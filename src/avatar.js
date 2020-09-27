@@ -10,13 +10,11 @@ import ReactDOM from "react-dom";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { IntlProvider, FormattedMessage, addLocaleData } from "react-intl";
-import ja from "react-intl/locale-data/ja";
-import en from "react-intl/locale-data/en";
+
+import { FormattedMessage } from "react-intl";
+import { WrappedIntlProvider } from "./react-components/wrapped-intl-provider";
 
 import configs from "./utils/configs";
-import { lang, messages } from "./utils/i18n";
-addLocaleData([...ja, ...en]);
 
 import { disableiOSZoom } from "./utils/disable-ios-zoom";
 disableiOSZoom();
@@ -135,9 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarId = qs.get("avatar_id") || document.location.pathname.substring(1).split("/")[1];
   console.log(`Avatar ID: ${avatarId}`);
   ReactDOM.render(
-    <IntlProvider locale={lang} messages={messages}>
+    <WrappedIntlProvider>
       <AvatarUI avatarId={avatarId} store={window.APP.store} />
-    </IntlProvider>,
+    </WrappedIntlProvider>,
     document.getElementById("ui-root")
   );
 });
