@@ -4,7 +4,8 @@
 
 export const AVAILABLE_LOCALES = {
   en: "English",
-  zh: "简体中文"
+  zh: "简体中文",
+  ja: "japanese"
 };
 
 export const FALLBACK_LOCALES = {
