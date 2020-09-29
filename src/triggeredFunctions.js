@@ -237,5 +237,17 @@ export class triggeredFunctions{
         }
     }
 
+    static canDoClick() {
+        // check if product modal is opend by searching one of the element of the modal
+        var el = document.getElementById("art_dialog_art_name");
+        if(!el)
+        {
+            // write product info on session
+            localStorage.setItem('art-name','スクリプト呼び出し実践');
+            localStorage.setItem('art-info','スクリプトがあればなんでも出来る');
+            localStorage.setItem('art-pic', 'https://digiroomsstack-assets.digi-rooms.link/files/27662fa8-1f37-45ff-a21a-8633b04ef3d0.jpg');
 
+            document.querySelectorAll('[class*=art-button]')[0].click();
+        }
+    }
 }

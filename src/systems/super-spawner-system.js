@@ -98,6 +98,10 @@ export class SuperSpawnerSystem {
       {
         triggeredFunctions.tokutei1Click();
       }
+      else if(state.hovered.object3D.name.indexOf('canDo') !== -1)
+      {
+        triggeredFunctions.canDoClick();
+      }
     }
   }
 
