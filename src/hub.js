@@ -4,6 +4,9 @@ import "./utils/theme";
 import "@babel/polyfill";
 import "./utils/debug-log";
 
+// function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+// var request = _interopDefault(require('request'));
+
 console.log(`App version: ${process.env.BUILD_VERSION || "?"}`);
 
 import "./assets/stylesheets/hub.scss";
@@ -220,6 +223,20 @@ NAF.options.syncSource = PHOENIX_RELIABLE_NAF;
 const isBotMode = qsTruthy("bot");
 const isTelemetryDisabled = qsTruthy("disable_telemetry");
 const isDebug = qsTruthy("debug");
+// get url parameter of challenge code
+const challenge = qs.get("challenge")
+//const request = require('Request');
+
+if(challenge)
+{
+  var hitCnt = getChallenge();
+  alert('hitCnt: ' + hitCnt);
+  if(hitCnt == 1)
+  {
+    alert('hit');
+  }
+}
+
 
 if (!isBotMode && !isTelemetryDisabled) {
   registerTelemetry("/hub", "Room Landing Page");
@@ -227,6 +244,21 @@ if (!isBotMode && !isTelemetryDisabled) {
 
 disableiOSZoom();
 detectConcurrentLoad();
+
+function getChallenge(){
+  var URL = 'https://s6dt3yyxzl.execute-api.ap-northeast-1.amazonaws.com/default/get_onetimepass_jedgement?challenge=' + challenge;
+  alert(URL);
+  var request = require('sync-request');
+  var response = request(
+    'GET',
+    URL
+    );
+  
+  console.log("Status Code (function) : "+response.statusCode);
+  var a = JSON.parse(response.body);
+    
+  return a.counts;
+}
 
 function setupLobbyCamera() {
   const camera = document.getElementById("scene-preview-node");
@@ -631,6 +663,8 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
     });
 
     const loadEnvironmentAndConnect = () => {
+      alert('bbbb')
+
       updateEnvironmentForHub(hub, entryManager);
       function onConnectionError() {
         console.error("Unknown error occurred while attempting to connect to networked scene.");

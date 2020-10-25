@@ -12,7 +12,6 @@ import { connectToReticulum } from "./utils/phoenix-utils";
 import Store from "./storage/store";
 
 registerTelemetry("/link", "Hubs Device Link");
-
 const store = new Store();
 
 const linkChannel = new LinkChannel(store);
