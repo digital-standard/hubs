@@ -223,34 +223,8 @@ NAF.options.syncSource = PHOENIX_RELIABLE_NAF;
 const isBotMode = qsTruthy("bot");
 const isTelemetryDisabled = qsTruthy("disable_telemetry");
 const isDebug = qsTruthy("debug");
-// get url parameter of challenge code
-const challenge = qs.get("challenge")
-const challengeCookieKey = "onetime";
 
-if(challenge)
-{
-  var hitCnt = judgeIfMatchPassword();
-  //alert('hitCnt: ' + hitCnt);
-  if(hitCnt == 1)
-  {
-    //alert('パスワードマッチ成功したのでクッキーをセット');
-    // write cookie
-    Cookies.set(challengeCookieKey, '1',  {expires: 1 / 24 / 20}); // limit 3 minuite
 
-    //upUsedFlg('3')
-  }
-}
-
-// auth by cookie
-const cookieAuthValue = Cookies.get(challengeCookieKey);
-if(cookieAuthValue == undefined || cookieAuthValue != 1)
-{
-  alert('認証失敗');
-  //window.location.href = 'https://your-rooms.com/';
-}
-else{
-  alert('認証成功');
-}
 
 if (!isBotMode && !isTelemetryDisabled) {
   registerTelemetry("/hub", "Room Landing Page");
@@ -258,31 +232,6 @@ if (!isBotMode && !isTelemetryDisabled) {
 
 disableiOSZoom();
 detectConcurrentLoad();
-
-function judgeIfMatchPassword(){
-  var URL = 'https://s6dt3yyxzl.execute-api.ap-northeast-1.amazonaws.com/default/get_onetimepass_jedgement?challenge=' + challenge;
-  var request = require('sync-request');
-  var response = request(
-    'GET',
-    URL
-    );
-  
-  console.log("Status Code (function) : "+response.statusCode);
-  var a = JSON.parse(response.body);
-    
-  return a.counts;
-}
-
-function upUsedFlg(id){
-  var URL = 'https://1d6z4jnx1l.execute-api.ap-northeast-1.amazonaws.com/default/update_used_flg?id=' + id;
-  var request = require('sync-request'); // should be async
-  var response = request(
-    'POST',
-    URL
-    );
-  
-  alert("Status Code (function) : "+response.statusCode);
-}
 
 function setupLobbyCamera() {
   const camera = document.getElementById("scene-preview-node");
@@ -538,6 +487,68 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
   }
 
   const hub = data.hubs[0];
+
+  // start
+  // get url parameter of challenge code
+  const roomId = hub.hub_id;
+  const challenge = qs.get("challenge")
+  const challengeCookieKey = "onetime";
+  const lockTargetRoomId = 'QvKfTpC';
+
+  if(roomId == lockTargetRoomId)
+  {
+    if(challenge)
+    {
+      var hitCnt = judgeIfMatchPassword();
+      //alert('hitCnt: ' + hitCnt);
+      if(hitCnt == 1)
+      {
+        //alert('パスワードマッチ成功したのでクッキーをセット');
+        // write cookie
+        Cookies.set(challengeCookieKey, '1',  {expires: 1 / 24 / 20}); // limit 3 minuite
+
+        //upUsedFlg('3')
+      }
+    }
+
+    // auth by cookie
+    const cookieAuthValue = Cookies.get(challengeCookieKey);
+    if(cookieAuthValue == undefined || cookieAuthValue != 1)
+    {
+      alert('認証失敗');
+      window.location.href = 'https://your-rooms.com/';
+    }
+    else{
+      alert('認証成功');
+    }
+  }
+  // end
+
+  function judgeIfMatchPassword(){
+    var URL = 'https://s6dt3yyxzl.execute-api.ap-northeast-1.amazonaws.com/default/get_onetimepass_jedgement?challenge=' + challenge;
+    var request = require('sync-request');
+    var response = request(
+      'GET',
+      URL
+      );
+    
+    console.log("Status Code (function) : "+response.statusCode);
+    var a = JSON.parse(response.body);
+      
+    return a.counts;
+  }
+  
+  function upUsedFlg(id){
+    var URL = 'https://1d6z4jnx1l.execute-api.ap-northeast-1.amazonaws.com/default/update_used_flg?id=' + id;
+    var request = require('sync-request'); // should be async
+    var response = request(
+      'POST',
+      URL
+      );
+    
+    alert("Status Code (function) : "+response.statusCode);
+  }
+
   let embedToken = hub.embed_token;
 
   if (!embedToken) {
