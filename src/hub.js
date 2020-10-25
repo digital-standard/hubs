@@ -225,18 +225,30 @@ const isTelemetryDisabled = qsTruthy("disable_telemetry");
 const isDebug = qsTruthy("debug");
 // get url parameter of challenge code
 const challenge = qs.get("challenge")
-//const request = require('Request');
+const challengeCookieKey = "onetime";
 
 if(challenge)
 {
-  var hitCnt = getChallenge();
-  alert('hitCnt: ' + hitCnt);
+  var hitCnt = judgeIfMatchPassword();
+  //alert('hitCnt: ' + hitCnt);
   if(hitCnt == 1)
   {
-    alert('hit');
+    //alert('パスワードマッチ成功したのでクッキーをセット');
+    // write cookie
+    Cookies.set(challengeCookieKey, '1',  {expires: 1 / 24 / 20}); // limit 3 minuite
   }
 }
 
+// auth by cookie
+const cookieAuthValue = Cookies.get(challengeCookieKey);
+if(cookieAuthValue == undefined || cookieAuthValue != 1)
+{
+  alert('認証失敗');
+  //window.location.href = 'https://your-rooms.com/';
+}
+else{
+  alert('認証成功');
+}
 
 if (!isBotMode && !isTelemetryDisabled) {
   registerTelemetry("/hub", "Room Landing Page");
@@ -245,9 +257,8 @@ if (!isBotMode && !isTelemetryDisabled) {
 disableiOSZoom();
 detectConcurrentLoad();
 
-function getChallenge(){
+function judgeIfMatchPassword(){
   var URL = 'https://s6dt3yyxzl.execute-api.ap-northeast-1.amazonaws.com/default/get_onetimepass_jedgement?challenge=' + challenge;
-  alert(URL);
   var request = require('sync-request');
   var response = request(
     'GET',
@@ -663,8 +674,6 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
     });
 
     const loadEnvironmentAndConnect = () => {
-      alert('bbbb')
-
       updateEnvironmentForHub(hub, entryManager);
       function onConnectionError() {
         console.error("Unknown error occurred while attempting to connect to networked scene.");
