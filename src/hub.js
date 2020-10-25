@@ -236,6 +236,8 @@ if(challenge)
     //alert('パスワードマッチ成功したのでクッキーをセット');
     // write cookie
     Cookies.set(challengeCookieKey, '1',  {expires: 1 / 24 / 20}); // limit 3 minuite
+
+    //upUsedFlg('3')
   }
 }
 
@@ -269,6 +271,17 @@ function judgeIfMatchPassword(){
   var a = JSON.parse(response.body);
     
   return a.counts;
+}
+
+function upUsedFlg(id){
+  var URL = 'https://1d6z4jnx1l.execute-api.ap-northeast-1.amazonaws.com/default/update_used_flg?id=' + id;
+  var request = require('sync-request'); // should be async
+  var response = request(
+    'POST',
+    URL
+    );
+  
+  alert("Status Code (function) : "+response.statusCode);
 }
 
 function setupLobbyCamera() {
